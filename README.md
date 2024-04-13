@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Android Stackoverflow questions search
 
-## Getting Started
+## Inroduction
 
-First, run the development server:
+We are interested in the area of Android development. We like to browse and answer Stack Overflow questions that are related to Android. However, it is tedious to search for the relevant questions on Stack Overflow.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This Next.js web app includes the following features:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Fetch and display the 10 latest Android questions from Stack Overflow.
+- Fetch and display the 10 most-voted Android questions from Stack Overflow from the past week.
+- Upon clicking a question title, expand to show the full question, with the accepted answer if available, otherwise the top-voted answer.
+- Ensure proper rendering of code snippets within questions and answers. Provide syntax highlighting and formatting for improved readability.
+- Implement a search feature that empowers users to find specific Android-related questions or topics using keywords, tags, and categories.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Step 1: Add static components
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Home page
 
-## Learn More
+- Header: contains the title of the web app, brief description, and search bar.
+- Question component in home page: contains the question title, tags, and the number of votes.
 
-To learn more about Next.js, take a look at the following resources:
+### Question page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Header: contains the title of the web app and a back button.
+- Question component in question page: contains the full question (title, body, tags, and votes).
+- Answer component in question page: contains the full answer (body, votes, and author).
