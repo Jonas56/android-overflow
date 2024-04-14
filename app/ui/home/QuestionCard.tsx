@@ -9,7 +9,7 @@ export default function QuestionCard({ question }: { question: Question }) {
         <div className="flex justify-between">
           <div>
             <Link href={`/thread/${question.id}`} className="text-gray-500">
-              <h1 className="text-2xl font-extrabold text-gray-600 max-w-3xl hover:text-green-500 hover:cursor-pointer">
+              <h1 className="text-md font-extrabold text-gray-600 max-w-3xl hover:text-green-500 hover:cursor-pointer md:text-2xl">
                 {question.title}
               </h1>
             </Link>
@@ -19,12 +19,14 @@ export default function QuestionCard({ question }: { question: Question }) {
               {question.votes >= 0 ? (
                 <div className="flex items-center mr-8">
                   <IoChevronUpSharp className="h-5 w-5 mr-1 text-green-500" />
-                  <span>{question.votes} votes</span>
+                  <span>{question.votes}</span>{" "}
+                  <span className="hidden sm:inline">votes</span>
                 </div>
               ) : (
                 <div className="flex items-center mr-8">
                   <IoChevronDownSharp className="h-5 w-5 mr-1 text-red-500" />
-                  <span>{question.votes} votes</span>
+                  <span>{question.votes} </span>{" "}
+                  <span className="hidden sm:hidden">votes</span>
                 </div>
               )}
             </div>
@@ -50,7 +52,7 @@ export default function QuestionCard({ question }: { question: Question }) {
               <p className="text-gray-500 pt-2">{question.creation_date}</p>
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="items-center hidden sm:flex">
             {question.tags.map((tag: string) => (
               <a
                 key={tag}

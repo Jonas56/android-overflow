@@ -9,6 +9,7 @@ export default async function Page() {
       <Header
         title="Android StackOverflow Questions"
         description="Checkout these 10 most voted Android questions on StackOverflow over the past week."
+        search={false}
       />
       <Suspense fallback={<QuestionsListSkelton />}>
         <QuestionsList trending={true} />
