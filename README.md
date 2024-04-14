@@ -11,6 +11,7 @@ This Next.js web app includes the following features:
 - [x] When clicking a question title, expand to show the full question, with the accepted answer if available, otherwise the top-voted answer.
 - [x] Ensure proper rendering of code snippets within questions and answers. Provide syntax highlighting and formatting for improved readability.
 - [x] Implement a search feature that allow users to find specific Android-related questions using keywords.
+- [x] Responsive design that works on both desktop and mobile devices.
 
 ## Technologies
 
@@ -19,6 +20,7 @@ This Next.js web app includes the following features:
 - TypeScript
 - React Markdown (for rendering markdown content)
 - ESLint
+- Stack Overflow API
 - ...
 
 ## Running the Project Locally
@@ -35,7 +37,7 @@ You can view the live demo [here](https://android-stackoverflow-questions.vercel
 ## Folder Structure
 
 ```bash
-android-stackoverflow-questions/
+android-overflow/
 ├── app/
 │   ├── ui/ # Contains all the UI components
 │   ├── lib/
