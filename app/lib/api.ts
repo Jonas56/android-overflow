@@ -83,10 +83,6 @@ export async function fetchTopAndroidQuestions(): Promise<
 
     const questions = response.data.items;
 
-    if (questions.length === 0) {
-      return undefined;
-    }
-
     return questions.map((question: any) => ({
       id: question.question_id,
       title: question.title,
@@ -128,10 +124,6 @@ export async function fetch10LatestAndroidQuestions(): Promise<
 
     const questions = response.data.items;
 
-    if (questions.length === 0) {
-      return undefined;
-    }
-
     return questions.map((question: any) => ({
       id: question.question_id,
       title: question.title,
@@ -172,10 +164,6 @@ export async function fetchQuestionsByKeyword(
     );
 
     const questions = response.data.items;
-
-    if (questions.length === 0) {
-      return undefined;
-    }
 
     return questions.map((question: any) => ({
       id: question.question_id,

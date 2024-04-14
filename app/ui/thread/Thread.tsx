@@ -1,11 +1,12 @@
 import AnswerThread from "./AnswerThread";
 import QuestionThread from "./QuestionThread";
 import { fetchThreadById } from "@/app/lib/api";
+import { notFound } from "next/navigation";
 
 export default async function Thread({ id }: { id: number }) {
   const result = await fetchThreadById(id);
-  if (result === undefined) {
-    return <div> Error fetching thread </div>;
+  if (!result) {
+    notFound();
   }
   return (
     <div className="bg-white rounded-lg shadow-md p-6">

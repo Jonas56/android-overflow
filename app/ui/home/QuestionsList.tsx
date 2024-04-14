@@ -5,7 +5,7 @@ import {
   fetch10LatestAndroidQuestions,
   fetchQuestionsByKeyword,
 } from "@/app/lib/api";
-import Example from "../common/ErrorModal";
+import Notification from "../common/ErrorModal";
 
 export default async function QuestionsList({
   trending,
@@ -21,13 +21,28 @@ export default async function QuestionsList({
       ? await fetchTopAndroidQuestions()
       : await fetch10LatestAndroidQuestions();
   }
-  return questions ? (
-    <ul role="list" className="w-full divide-y divide-gray-100">
-      {questions.map((question: any) => (
-        <QuestionCard key={question.id} question={question} />
-      ))}
-    </ul>
-  ) : (
-    <Example />
-  );
+  if (questions) {
+    if (questions.length === 0) {
+      return (
+        <Notification
+          message="No questions found!"
+          cause="Please try again with another query"
+        />
+      );
+    } else
+      return (
+        <ul role="list" className="w-full divide-y divide-gray-100">
+          {questions.map((question: any) => (
+            <QuestionCard key={question.id} question={question} />
+          ))}
+        </ul>
+      );
+  } else {
+    return (
+      <Notification
+        message="Unable to fetch questions"
+        cause="Please check you internet connection and try again!"
+      />
+    );
+  }
 }

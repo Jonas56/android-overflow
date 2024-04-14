@@ -4,7 +4,13 @@ import { Transition } from "@headlessui/react";
 import { MdError } from "react-icons/md";
 import { RxCross1 as XIcon } from "react-icons/rx";
 
-export default function Example() {
+export default function Example({
+  message,
+  cause,
+}: {
+  message: string;
+  cause: string;
+}) {
   const [show, setShow] = useState(true);
 
   return (
@@ -37,11 +43,9 @@ export default function Example() {
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
                     <p className="text-sm font-medium text-gray-900">
-                      Error while fetching data!
+                      {message}
                     </p>
-                    <p className="mt-1 text-sm text-gray-500">
-                      Please check your internet connection and try again
-                    </p>
+                    <p className="mt-1 text-sm text-gray-500">{cause}</p>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
                     <button

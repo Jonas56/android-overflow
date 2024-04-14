@@ -16,6 +16,7 @@ export default function Page({
       <Header
         title="Android StackOverflow Questions"
         description="Checkout these 10 latest Android questions on StackOverflow."
+        search={true}
       />
       <Suspense key={query} fallback={<QuestionsListSkelton />}>
         <QuestionsList trending={false} query={query} />

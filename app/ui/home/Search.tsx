@@ -18,7 +18,7 @@ export default function Search() {
   }, 300);
 
   return (
-    <form className="flex items-center max-w-lg mx-auto mt-10">
+    <div className="flex items-center max-w-lg mx-auto mt-10">
       <label htmlFor="voice-search" className="sr-only">
         Search
       </label>
@@ -38,6 +38,6 @@ export default function Search() {
           defaultValue={searchParams.get("query")?.toString()}
         />
       </div>
-    </form>
+    </div>
   );
 }

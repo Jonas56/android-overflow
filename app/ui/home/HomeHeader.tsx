@@ -1,12 +1,15 @@
 import Link from "next/link";
 import Search from "./Search";
+import { Suspense } from "react";
 
 export default function Header({
   title,
   description,
+  search,
 }: {
   title: string;
   description: string;
+  search: boolean;
 }) {
   return (
     <div className="mb-16">
@@ -31,7 +34,11 @@ export default function Header({
         </div>
       </div>
       <div>
-        <Search />
+        {search && (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Search />
+          </Suspense>
+        )}
       </div>
     </div>
   );
