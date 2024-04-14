@@ -6,8 +6,9 @@ import { format } from "date-fns";
 export async function fetchThreadById(
   id: number
 ): Promise<Threadtype | undefined> {
+  noStore(); // This is a Next.js specific function to prevent caching I could have used cache-control headers as well
   try {
-    const response: AxiosResponse<any> = await axios.get(
+    const response: AxiosResponse = await axios.get(
       `https://api.stackexchange.com/2.3/questions/${id}`,
       {
         params: {
@@ -15,6 +16,7 @@ export async function fetchThreadById(
           site: "stackoverflow",
           sort: "activity",
           order: "desc",
+          filter: "!nNPvSNP4(R",
         },
       }
     );
@@ -32,7 +34,7 @@ export async function fetchThreadById(
         new Date(questionData.creation_date * 1000),
         "MMM d 'at' h:mm a"
       ),
-      description: questionData.body,
+      description: questionData.body_markdown,
       votes: questionData.score,
       tags: questionData.tags,
       has_accepted_answer: !!questionData.accepted_answer_id,
@@ -43,7 +45,7 @@ export async function fetchThreadById(
 
     let answer: Answer | undefined;
 
-    if (questionData.accepted_answer_id !== null) {
+    if (questionData.accepted_answer_id) {
       answer = await fetchAnswerById(questionData.accepted_answer_id);
     } else {
       answer = await fetchMostVotedAnswer(id);
@@ -168,14 +170,14 @@ export async function fetchQuestionsByKeyword(query: string) {
 
 async function fetchAnswerById(answerId: number): Promise<Answer | undefined> {
   try {
-    const response: AxiosResponse<any> = await axios.get(
+    const response: AxiosResponse = await axios.get(
       `https://api.stackexchange.com/2.3/answers/${answerId}`,
       {
         params: {
           order: "desc",
           sort: "activity",
           site: "stackoverflow",
-          filter: "!-*f(6t*ZfUuq",
+          filter: "!nNPvSNe7Gv",
         },
       }
     );
@@ -192,7 +194,7 @@ async function fetchAnswerById(answerId: number): Promise<Answer | undefined> {
         new Date(answerData.creation_date * 1000),
         "MMM d 'at' h:mm a"
       ),
-      description: answerData.body,
+      description: answerData.body_markdown,
       userAvatarLink: answerData.owner.profile_image,
       userProfileLink: answerData.owner.link,
       votes: answerData.score,
@@ -209,14 +211,14 @@ async function fetchMostVotedAnswer(
   questionId: number
 ): Promise<Answer | undefined> {
   try {
-    const response: AxiosResponse<any> = await axios.get(
+    const response: AxiosResponse = await axios.get(
       `https://api.stackexchange.com/2.3/questions/${questionId}/answers`,
       {
         params: {
           order: "desc",
           sort: "votes",
           site: "stackoverflow",
-          filter: "!-*f(6t*ZfUuq",
+          filter: "!nNPvSNe7Gv",
         },
       }
     );
@@ -233,7 +235,7 @@ async function fetchMostVotedAnswer(
         new Date(answerData.creation_date * 1000),
         "MMM d 'at' h:mm a"
       ),
-      description: answerData.body,
+      description: answerData.body_markdown,
       userAvatarLink: answerData.owner.profile_image,
       userProfileLink: answerData.owner.link,
       votes: answerData.score,

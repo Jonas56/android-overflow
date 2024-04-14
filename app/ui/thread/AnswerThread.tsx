@@ -30,9 +30,7 @@ export default function AnswerThread({ answer }: { answer: Answer }) {
         <div className="flex items-center gap-2">
           <>
             <CiCalendar className="h-5 w-5 mr-1 text-gray-700" />
-            <span className="text-gray-500">
-              {new Date(answer.creation_date).toLocaleDateString()}
-            </span>
+            <span className="text-gray-500">{answer.creation_date}</span>
           </>
 
           <>

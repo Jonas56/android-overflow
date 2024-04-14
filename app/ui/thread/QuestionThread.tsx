@@ -40,7 +40,7 @@ export default async function QuestionThread({
 
         <div className="flex items-center mr-8">
           <CiCalendar className="h-5 w-5 mr-1 text-gray-700" />
-          <span>{new Date(question.creation_date).toLocaleString()}</span>{" "}
+          <span>{question.creation_date}</span>{" "}
         </div>
         <a
           className="flex items-center"
@@ -65,7 +65,7 @@ export default async function QuestionThread({
             target="_blank"
             rel="noopener noreferrer"
           >
-            {tag}
+            #{tag}
           </a>
         ))}
       </div>
