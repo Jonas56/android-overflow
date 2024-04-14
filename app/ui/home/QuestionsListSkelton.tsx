@@ -1,4 +1,4 @@
-export default function LoadingSkelton() {
+export default function QuestionsListSkelton() {
   return (
     <>
       <div

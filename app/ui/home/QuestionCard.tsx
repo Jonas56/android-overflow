@@ -1,6 +1,8 @@
+import { Question } from "@/app/lib/definitions";
 import Link from "next/link";
+import { IoChevronDownSharp, IoChevronUpSharp } from "react-icons/io5";
 
-export default function QuestionCard({ question }: any) {
+export default function QuestionCard({ question }: { question: Question }) {
   return (
     <div className="flex flex-col mt-10">
       <div className="flex flex-col bg-white p-6 rounded-lg shadow-md">
@@ -14,10 +16,17 @@ export default function QuestionCard({ question }: any) {
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center">
-              <span className="text-lg font-bold text-gray-600">
-                {question.votes}
-              </span>
-              <span className="text-gray-500 ml-2">votes</span>
+              {question.votes >= 0 ? (
+                <div className="flex items-center mr-8">
+                  <IoChevronUpSharp className="h-5 w-5 mr-1 text-green-500" />
+                  <span>{question.votes} votes</span>
+                </div>
+              ) : (
+                <div className="flex items-center mr-8">
+                  <IoChevronDownSharp className="h-5 w-5 mr-1 text-red-500" />
+                  <span>{question.votes} votes</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -38,9 +47,7 @@ export default function QuestionCard({ question }: any) {
               >
                 {question.username}
               </a>
-              <p className="text-gray-500 pt-2">
-                {new Date(question.creation_date).toLocaleDateString()}
-              </p>
+              <p className="text-gray-500 pt-2">{question.creation_date}</p>
             </div>
           </div>
           <div className="flex items-center">
