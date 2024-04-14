@@ -32,7 +32,7 @@ This Next.js web app includes the following features:
 
 ## Live Demo
 
-You can view the live demo [here](https://android-stackoverflow-questions.vercel.app/).
+You can view the live demo [here](https://android-overflow.vercel.app/).
 
 ## Folder Structure
 
