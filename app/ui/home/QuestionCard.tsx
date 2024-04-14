@@ -20,7 +20,7 @@ export default function QuestionCard({ question }: { question: Question }) {
                 <div className="flex items-center mr-8">
                   <IoChevronUpSharp className="h-5 w-5 mr-1 text-green-500" />
                   <span>{question.votes}</span>{" "}
-                  <span className="hidden sm:inline">votes</span>
+                  <span className="hidden sm:inline"> votes</span>
                 </div>
               ) : (
                 <div className="flex items-center mr-8">
