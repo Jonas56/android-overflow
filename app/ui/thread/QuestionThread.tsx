@@ -22,7 +22,7 @@ export default async function QuestionThread({
         </a>
       </div>
       <hr className="my-6" />
-      <div className="mb-4 text-lg">
+      <div className="mb-4 text-lg overflow-x-auto">
         <MarkdownRenderer markdown={question.description} />
       </div>
       <div className="flex items-center text-gray-500 text-sm mb-4">

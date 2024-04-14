@@ -1,17 +1,26 @@
+import { Question } from "@/app/lib/definitions";
 import QuestionCard from "./QuestionCard";
 import {
   fetchTopAndroidQuestions,
   fetch10LatestAndroidQuestions,
+  fetchQuestionsByKeyword,
 } from "@/app/lib/api";
+import Example from "../common/ErrorModal";
 
 export default async function QuestionsList({
   trending,
+  query,
 }: {
   trending: boolean;
+  query?: string;
 }) {
-  const questions = trending
-    ? await fetchTopAndroidQuestions()
-    : await fetch10LatestAndroidQuestions();
+  let questions: Question[] | undefined;
+  if (query) questions = await fetchQuestionsByKeyword(query);
+  else {
+    questions = trending
+      ? await fetchTopAndroidQuestions()
+      : await fetch10LatestAndroidQuestions();
+  }
   return questions ? (
     <ul role="list" className="w-full divide-y divide-gray-100">
       {questions.map((question: any) => (
@@ -19,6 +28,6 @@ export default async function QuestionsList({
       ))}
     </ul>
   ) : (
-    <p className="text-center text-lg">Error When Fetching questions...</p>
+    <Example />
   );
 }

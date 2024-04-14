@@ -83,6 +83,10 @@ export async function fetchTopAndroidQuestions(): Promise<
 
     const questions = response.data.items;
 
+    if (questions.length === 0) {
+      return undefined;
+    }
+
     return questions.map((question: any) => ({
       id: question.question_id,
       title: question.title,
@@ -124,6 +128,10 @@ export async function fetch10LatestAndroidQuestions(): Promise<
 
     const questions = response.data.items;
 
+    if (questions.length === 0) {
+      return undefined;
+    }
+
     return questions.map((question: any) => ({
       id: question.question_id,
       title: question.title,
@@ -144,7 +152,9 @@ export async function fetch10LatestAndroidQuestions(): Promise<
   }
 }
 
-export async function fetchQuestionsByKeyword(query: string) {
+export async function fetchQuestionsByKeyword(
+  query: string
+): Promise<Question[] | undefined> {
   noStore(); // This is a Next.js specific function to prevent caching I could have used cache-control headers as well
   try {
     const response = await axios.get(
@@ -156,13 +166,32 @@ export async function fetchQuestionsByKeyword(query: string) {
           sort: "relevance",
           order: "desc",
           pagesize: 10,
+          tagged: "android",
         },
       }
     );
 
     const questions = response.data.items;
 
-    return questions;
+    if (questions.length === 0) {
+      return undefined;
+    }
+
+    return questions.map((question: any) => ({
+      id: question.question_id,
+      title: question.title,
+      username: question.owner.display_name,
+      votes: question.score,
+      tags: question.tags,
+      creation_date: format(
+        new Date(question.creation_date * 1000),
+        "MMM d 'at' h:mm a"
+      ),
+      userAvatarLink: question.owner.profile_image,
+      userProfileLink: question.owner.link,
+      has_accepted_answer: question.is_answered,
+      questionLink: question.link,
+    }));
   } catch (error) {
     console.error("Error fetching questions:", error);
   }

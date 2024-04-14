@@ -8,7 +8,7 @@ export default function AnswerThread({ answer }: { answer: Answer }) {
     <>
       <div className="bg-green-100 rounded-lg p-4 mb-4">
         <h3 className="text-xl font-semibold mb-2">Accepted Answer</h3>
-        <div className="bg-white p-10">
+        <div className="bg-white p-10 overflow-x-auto">
           <MarkdownRenderer markdown={answer.description} />
         </div>
       </div>
