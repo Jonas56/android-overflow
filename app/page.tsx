@@ -1,4 +1,4 @@
-import { Question, Threadtype } from "@/app/lib/definitions";
+import { Question } from "@/app/lib/definitions";
 import Header from "./ui/home/Header";
 import QuestionsList from "./ui/home/QuestionsList";
 
