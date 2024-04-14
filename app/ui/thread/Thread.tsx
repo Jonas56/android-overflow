@@ -13,7 +13,7 @@ export async function Thread({ id }: { id: number }) {
         <QuestionThread question={result.question} />
         <hr className="my-6" />
         {result.answer === undefined ? (
-          <div> No accepted answer found check out other answers here </div>
+          <div> No answer found for this question yet.</div>
         ) : (
           <AnswerThread answer={result.answer} />
         )}

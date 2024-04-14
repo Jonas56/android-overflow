@@ -1,6 +1,7 @@
 import { Question } from "@/app/lib/definitions";
 import Link from "next/link";
 import { IoChevronDownSharp, IoChevronUpSharp } from "react-icons/io5";
+import MarkdownRenderer from "@/app/ui/common/MarkdownRenderer";
 
 export default function QuestionCard({ question }: { question: Question }) {
   return (
@@ -10,7 +11,7 @@ export default function QuestionCard({ question }: { question: Question }) {
           <div>
             <Link href={`/thread/${question.id}`} className="text-gray-500">
               <h1 className="text-md font-extrabold text-gray-600 max-w-3xl hover:text-green-500 hover:cursor-pointer md:text-2xl">
-                {question.title}
+                <MarkdownRenderer markdown={question.title} />
               </h1>
             </Link>
           </div>
@@ -40,14 +41,13 @@ export default function QuestionCard({ question }: { question: Question }) {
               className="w-10 h-10 rounded-full"
             />
             <div className="ml-4">
-              <span>Asked By:</span>{" "}
               <a
                 className="text-gray-900 font-bold"
                 href={question.userProfileLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {question.username}
+                <MarkdownRenderer markdown={`Asked By: ${question.username}`} />
               </a>
               <p className="text-gray-500 pt-2">{question.creation_date}</p>
             </div>

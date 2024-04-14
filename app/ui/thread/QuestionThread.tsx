@@ -8,10 +8,12 @@ export async function QuestionThread({ question }: { question: Question }) {
   return (
     <>
       <div className="text-3xl font-semibold mb-5">
-        {question.title}
+        <MarkdownRenderer markdown={question.title} />
         <a
           href={question.questionLink}
           className="mb-5 hover:text-green-400 hover:underline-offset-2 transition duration-200 ease-in-out"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {` `}
           <FaExternalLinkAlt className="h-6 w-6 inline-block" />
