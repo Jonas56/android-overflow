@@ -1,108 +1,36 @@
-import Header from "@/app/ui/home/header";
-import Questions from "@/app/ui/home/Questions";
-import axios from "axios";
+import { Question } from "@/app/lib/definitions";
+import Header from "@/app/ui/home/Header";
+import QuestionCard from "@/app/ui/home/QuestionCard";
+import QuestionThread from "./ui/thread/QuestionThread";
 
-const questions = [
-  {
+const question: Question = {
+  id: 1,
+  title:
+    "How can I troubleshoot my react multistep form back button that does not work correctly?",
+  username: "John Doe",
+  creation_date: 1628400000,
+  description:
+    "I&#39;m not sure why DELETE is an issue considering your settings yet.\r\nTemporarily set your configuration to \r\n```app.use(cors({\r\n    allowedHeaders: &#39;*&#39;,\r\n    credentials: false,\r\n    origin: &#39;*&#39;,\r\n    methods: &#39;*&#39;\r\n}));\r\n```\r\nAnd see if the issue persists.\r\n\r\nAlso ensure that you are not overriding the cors settings on the delete method.\r\n\r\nEdit: Maybe the Access-Control-Allow-Origin Chrome add on is interfering. Consider disabling that or trying in a different browser.\r\n\r\nEdit 2: Try changing to ```http://localhost:3000``` from ```localhost:3000``` The line doesn&#39;t actually need the brackets either since its one item. So this would work: \r\n```origin: &#39;http://localhost:3000&#39;,```\r\n\r\nEdit 3: Try adding an additional step in the backend (after cors settings are set) to log the cors headers from the frontend and from postman (edit for typescript):\r\n```\r\napp.use((req, res, next) =&gt; {\r\n    console.log(&#39;CORS headers:&#39;, res.getHeaders());\r\n    next();\r\n});\r\n```",
+  votes: 10,
+  tags: ["kotlin", "retrofit"],
+  userAvatarLink:
+    "https://lh3.googleusercontent.com/a/ACg8ocKTyUzUwFxVAcU_eWsno2NQHtTjmf8z2Cpa_KPViGWR7nU=k-s256",
+  userProfileLink: "https://stackoverflow.com/users/23139089/jean-mako",
+  has_accepted_answer: true,
+  answer: {
     id: 1,
-    title:
-      "SocketException: Connection refused when connecting to PostgreSQL from mobile device",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "0",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonaaaaaaasnow",
+    title: "Answer title",
+    username: "Jane Doe",
+    creation_date: 1628400000,
+    description: "Answer description",
+    votes: 10,
   },
-  {
-    id: 2,
-    title:
-      "SocketException: Connection refused when connecting to PostgreSQL from mobile device SocketException: Connection refer when connecting to PostgreSQL from mobile device",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "1",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonsnow",
-  },
-  {
-    id: 3,
-    title: "Dries Vincent",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "10",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonsnow",
-  },
-  {
-    id: 4,
-    title: "Lindsay Walton",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "10",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonsnow",
-  },
-  {
-    id: 5,
-    title: "Courtney Henry",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "20",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonsnow",
-  },
-  {
-    id: 6,
-    title: "Tom Cook",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "20",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonsnow",
-  },
-  {
-    id: 10,
-    title:
-      "SocketException: Connection refused when connecting to PostgreSQL from mobile device",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "0",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonaaaaaaasnow",
-  },
-  {
-    id: 12,
-    title:
-      "SocketException: Connection refused when connecting to PostgreSQL from mobile device",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "0",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonaaaaaaasnow",
-  },
-  {
-    id: 14,
-    title:
-      "SocketException: Connection refused when connecting to PostgreSQL from mobile device",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "0",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonaaaaaaasnow",
-  },
-  {
-    id: 199,
-    title:
-      "SocketException: Connection refused when connecting to PostgreSQL from mobile device",
-    tags: ["android", "java", "kotlin", "ui"],
-    votes: "0",
-    userimageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "jonaaaaaaasnow",
-  },
-];
+};
 
 export default function Home() {
   return (
-    <main className="bg-gray-100 flex flex-col lg:px-60 p-10 py-24"></main>
+    <main className="bg-gray-50 flex flex-col xl:px-60 p-10 py-24">
+      <QuestionThread question={question} />
+    </main>
   );
 }
