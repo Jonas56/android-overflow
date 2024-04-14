@@ -1,6 +1,6 @@
-import { Question, Threadtype } from "@/app/lib/definitions";
-import Header from "./ui/home/Header";
-import QuestionsList from "./ui/home/QuestionsList";
+import { Question } from "@/app/lib/definitions";
+import Header from "../ui/home/Header";
+import QuestionsList from "@/app/ui/home/QuestionsList";
 
 const questions: Question[] = [
   {
@@ -40,7 +40,7 @@ export default function Page() {
     <main className="container mx-auto py-10">
       <Header
         title="Android StackOverflow Questions"
-        description="Checkout these 10 most voted Android questions on StackOverflow over the past week."
+        description="Checkout these 10 latest Android questions on StackOverflow."
       />
       <QuestionsList questions={questions} />
     </main>

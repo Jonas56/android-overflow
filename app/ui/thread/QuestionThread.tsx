@@ -2,6 +2,7 @@ import { Question } from "@/app/lib/definitions";
 import MarkdownRenderer from "@/app/ui/common/MarkdownRenderer";
 import { IoChevronDownSharp, IoChevronUpSharp } from "react-icons/io5";
 import { CiCalendar } from "react-icons/ci";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default async function QuestionThread({
   question,
@@ -10,17 +11,20 @@ export default async function QuestionThread({
 }) {
   return (
     <>
-      <a
-        href={question.questionLink}
-        className="text-3xl font-semibold mb-5 hover:text-indigo-400 hover:underline-offset-2 transition duration-200 ease-in-out"
-      >
+      <div className="text-3xl font-semibold mb-5">
         {question.title}
-      </a>
+        <a
+          href={question.questionLink}
+          className="mb-5 hover:text-green-400 hover:underline-offset-2 transition duration-200 ease-in-out"
+        >
+          {` `}
+          <FaExternalLinkAlt className="h-6 w-6 inline-block" />
+        </a>
+      </div>
       <hr className="my-6" />
       <div className="mb-4 text-lg">
         <MarkdownRenderer markdown={question.description} />
       </div>
-
       <div className="flex items-center text-gray-500 text-sm mb-4">
         {question.votes > 0 ? (
           <div className="flex items-center mr-8">
@@ -52,12 +56,11 @@ export default async function QuestionThread({
           <span>{question.username}</span>
         </a>
       </div>
-
       <div className="flex flex-wrap mb-6">
         {question.tags.map((tag) => (
           <a
             key={tag}
-            className="bg-blue-100 text-blue-600 px-3 py-1 rounded-md text-xs mr-2 mb-2"
+            className="bg-green-100 text-green-600 px-3 py-1 rounded-md text-xs mr-2 mb-2"
             href={`https://stackoverflow.com/questions/tagged/${tag}`}
             target="_blank"
             rel="noopener noreferrer"

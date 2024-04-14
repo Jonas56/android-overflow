@@ -1,12 +1,16 @@
+import Link from "next/link";
+
 export default function QuestionCard({ question }: any) {
   return (
     <div className="flex flex-col mt-10">
       <div className="flex flex-col bg-white p-6 rounded-lg shadow-md">
         <div className="flex justify-between">
           <div>
-            <h1 className="text-2xl font-extrabold text-gray-600 max-w-3xl hover:text-green-500 hover:cursor-pointer">
-              {question.title}
-            </h1>
+            <Link href={`/thread/${question.id}`} className="text-gray-500">
+              <h1 className="text-2xl font-extrabold text-gray-600 max-w-3xl hover:text-green-500 hover:cursor-pointer">
+                {question.title}
+              </h1>
+            </Link>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center">
