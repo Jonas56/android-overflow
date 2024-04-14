@@ -1,4 +1,3 @@
-import { Threadtype } from "@/app/lib/definitions";
 import Header from "@/app/ui/thread/Header";
 import QuestionThreadSkelton from "@/app/ui/thread/QuestionThreadSkelton";
 import Thread from "@/app/ui/thread/Thread";

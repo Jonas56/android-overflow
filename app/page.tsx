@@ -1,7 +1,7 @@
-import Header from "@/app/ui/home/Header";
-import QuestionsList from "@/app/ui/home/QuestionsList";
 import { Suspense } from "react";
-import QuestionsListSkelton from "./ui/home/QuestionsListSkelton";
+import Header from "@/app/ui/home/HomeHeader";
+import QuestionsList from "@/app/ui/home/QuestionsList";
+import QuestionsListSkelton from "@/app/ui/home/QuestionsListSkelton";
 
 export default async function Page() {
   return (

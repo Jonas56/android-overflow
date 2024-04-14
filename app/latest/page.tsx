@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import Header from "../ui/home/Header";
+import Header from "@/app/ui/home/HomeHeader";
 import QuestionsList from "@/app/ui/home/QuestionsList";
-import QuestionsListSkelton from "../ui/home/QuestionsListSkelton";
+import QuestionsListSkelton from "@/app/ui/home/QuestionsListSkelton";
 
 export default function Page() {
   return (

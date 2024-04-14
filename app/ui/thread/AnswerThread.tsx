@@ -1,5 +1,5 @@
 import { Answer } from "@/app/lib/definitions";
-import MarkdownRenderer from "../common/MarkdownRenderer";
+import MarkdownRenderer from "@/app/ui/common/MarkdownRenderer";
 import { IoChevronUpSharp, IoChevronDownSharp } from "react-icons/io5";
 import { CiCalendar } from "react-icons/ci";
 

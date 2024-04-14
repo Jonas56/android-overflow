@@ -1,4 +1,3 @@
-import { Threadtype } from "@/app/lib/definitions";
 import AnswerThread from "./AnswerThread";
 import QuestionThread from "./QuestionThread";
 import { fetchThreadById } from "@/app/lib/api";
