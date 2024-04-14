@@ -1,7 +1,5 @@
 import { Suspense } from "react";
-import Header from "@/app/ui/home/HomeHeader";
-import QuestionsList from "@/app/ui/home/QuestionsList";
-import QuestionsListSkelton from "@/app/ui/home/QuestionsListSkelton";
+import { Header, QuestionsList, QuestionsListSkelton } from "@/app/ui/home";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

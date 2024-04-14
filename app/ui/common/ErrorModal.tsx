@@ -4,7 +4,7 @@ import { Transition } from "@headlessui/react";
 import { MdError } from "react-icons/md";
 import { RxCross1 as XIcon } from "react-icons/rx";
 
-export default function Example({
+export default function Error({
   message,
   cause,
 }: {

@@ -3,7 +3,7 @@ import MarkdownRenderer from "@/app/ui/common/MarkdownRenderer";
 import { IoChevronUpSharp, IoChevronDownSharp } from "react-icons/io5";
 import { CiCalendar } from "react-icons/ci";
 
-export default function AnswerThread({ answer }: { answer: Answer }) {
+export function AnswerThread({ answer }: { answer: Answer }) {
   return (
     <>
       <div className="bg-green-100 rounded-lg p-4 mb-4">

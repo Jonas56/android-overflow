@@ -1,8 +1,6 @@
-import Header from "@/app/ui/thread/Header";
-import QuestionThreadSkelton from "@/app/ui/thread/QuestionThreadSkelton";
-import Thread from "@/app/ui/thread/Thread";
-import { Metadata } from "next";
 import { Suspense } from "react";
+import { Metadata } from "next";
+import { Header, QuestionThreadSkelton, Thread } from "@/app/ui/thread";
 
 export const metadata: Metadata = {
   title: "Thread",

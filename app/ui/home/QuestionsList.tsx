@@ -7,7 +7,7 @@ import {
 } from "@/app/lib/api";
 import Notification from "../common/ErrorModal";
 
-export default async function QuestionsList({
+export async function QuestionsList({
   trending,
   query,
 }: {

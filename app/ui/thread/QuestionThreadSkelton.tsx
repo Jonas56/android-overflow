@@ -1,4 +1,4 @@
-export default function QuestionThreadSkelton() {
+export function QuestionThreadSkelton() {
   return (
     <div className="text-3xl font-semibold mb-5 animate-pulse">
       <div className="h-8 w-3/4 bg-gray-300 mb-2"></div>

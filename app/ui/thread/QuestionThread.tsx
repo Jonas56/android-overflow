@@ -4,11 +4,7 @@ import { IoChevronDownSharp, IoChevronUpSharp } from "react-icons/io5";
 import { CiCalendar } from "react-icons/ci";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-export default async function QuestionThread({
-  question,
-}: {
-  question: Question;
-}) {
+export async function QuestionThread({ question }: { question: Question }) {
   return (
     <>
       <div className="text-3xl font-semibold mb-5">

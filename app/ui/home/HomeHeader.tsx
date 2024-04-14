@@ -2,7 +2,7 @@ import Link from "next/link";
 import Search from "./Search";
 import { Suspense } from "react";
 
-export default function Header({
+export function Header({
   title,
   description,
   search,

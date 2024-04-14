@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Header() {
+export function Header() {
   return (
     <div className="mb-10">
       <div className="container mx-auto">

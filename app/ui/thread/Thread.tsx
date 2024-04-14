@@ -1,9 +1,8 @@
-import AnswerThread from "./AnswerThread";
-import QuestionThread from "./QuestionThread";
+import { AnswerThread, QuestionThread } from "./";
 import { fetchThreadById } from "@/app/lib/api";
 import { notFound } from "next/navigation";
 
-export default async function Thread({ id }: { id: number }) {
+export async function Thread({ id }: { id: number }) {
   const result = await fetchThreadById(id);
   if (!result) {
     notFound();
