@@ -14,13 +14,13 @@ export default function Header({
           </h1>
           <p className="mt-4 mx-auto text-base text-gray-500">{description}</p>
         </div>
-        <div className="flex justify-end">
-          <a href="/#" className="text-green-500 text-xl pr-10">
+        <div className="">
+          <button className="bg-green-500 text-white px-4 py-2 rounded-lg mr-4">
             Most Votes
-          </a>
-          <a href="/#" className="text-green-500 text-xl">
+          </button>
+          <button className="bg-green-500 text-white px-4 py-2 rounded-lg">
             Latest
-          </a>
+          </button>
         </div>
       </div>
       <div>

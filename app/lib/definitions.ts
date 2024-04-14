@@ -9,7 +9,7 @@ export interface Question {
   has_accepted_answer: boolean;
   userAvatarLink?: string;
   userProfileLink?: string;
-  answer?: Answer;
+  questionLink?: string;
 }
 
 export interface Answer {
@@ -19,5 +19,11 @@ export interface Answer {
   creation_date: number;
   description: string;
   userAvatarLink?: string;
+  userProfileLink?: string;
   votes: number;
+}
+
+export interface Threadtype {
+  question: Question;
+  answer?: Answer;
 }

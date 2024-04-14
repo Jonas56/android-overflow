@@ -28,7 +28,7 @@ export default function QuestionCard({ question }: any) {
               <span>Asked By:</span>{" "}
               <a
                 className="text-gray-900 font-bold"
-                href="https://stackoverflow.com/users/23139089/jean-mako"
+                href={question.userProfileLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
